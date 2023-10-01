@@ -50,7 +50,7 @@ public partial class Endpoints
         Dictionary<string, string> queryParameters = new();
 
         if (query != null)
-            queryParameters.Add("query", query!);
+            queryParameters.Add("search", query!);
         if (mode != null)
             queryParameters.Add("mode", ((int)mode).ToString()!);
         if (status != null)

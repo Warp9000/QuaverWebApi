@@ -28,6 +28,18 @@ public class Wrapper
         this.baseUrl = baseUrl;
     }
 
+    public async Task DownloadAsync(string endpoint, string filename)
+    {
+        var url = baseUrl + endpoint.TrimStart('/');
+        Debug.WriteLine("GET " + url);
+        var response = await client.GetAsync(url);
+        var bytes = await response.Content.ReadAsByteArrayAsync();
+
+        var file = System.IO.File.Create(filename);
+        await file.WriteAsync(bytes);
+        file.Close();
+    }
+
     public async Task<string> GetAsync(string endpoint)
     {
         var url = baseUrl + endpoint.TrimStart('/');
