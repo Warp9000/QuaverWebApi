@@ -28,6 +28,28 @@ public partial class Endpoints
         return await Wrapper.GetAsync<Mapset>($"mapsets/{id}", "mapset");
     }
 
+    public async Task<SearchMapset[]> SearchMapsets(MapsetFilter filter)
+    {
+        return await SearchMapsets(
+        filter.query,
+        filter.mode,
+        filter.status,
+        filter.page,
+        filter.limit,
+        filter.mindiff,
+        filter.maxdiff,
+        filter.minbpm,
+        filter.maxbpm,
+        filter.minlength,
+        filter.maxlength,
+        filter.minlns,
+        filter.maxlns,
+        filter.minplaycount,
+        filter.maxplaycount,
+        filter.mindate,
+        filter.maxdate);
+    }
+
     public async Task<SearchMapset[]> SearchMapsets(
         string? query = null,
         GameMode? mode = null,
