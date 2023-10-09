@@ -77,10 +77,10 @@ public struct FullUser
             public int UserId { get; set; }
 
             [JsonProperty("total_score")]
-            public int TotalScore { get; set; }
+            public long TotalScore { get; set; }
 
             [JsonProperty("ranked_score")]
-            public int RankedScore { get; set; }
+            public long RankedScore { get; set; }
 
             [JsonProperty("overall_accuracy")]
             public double OverallAccuracy { get; set; }
