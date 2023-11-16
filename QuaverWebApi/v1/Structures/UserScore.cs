@@ -64,7 +64,7 @@ public struct UserScore
     public int ScrollSpeed { get; set; }
 
     [JsonProperty("tournament_game_id")]
-    public int TournamentGameId { get; set; }
+    public int? TournamentGameId { get; set; }
 
     [JsonProperty("ratio")]
     public double Ratio { get; set; }
