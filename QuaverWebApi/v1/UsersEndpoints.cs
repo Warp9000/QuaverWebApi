@@ -65,17 +65,15 @@ public partial class Endpoints
 
     public async Task<BasicMapset[]> GetUserMapsetsAsync(int id, GameMode? mode = null, RankedStatus? status = null, int page = 0)
     {
-        List<(string key, string value)> queryParameters = new()
-        {
-            ("id", id.ToString())
-        };
+        List<(string key, string value)> queryParameters = new();
+
         if (mode != null)
             queryParameters.Add(("mode", ((int)mode).ToString()));
         if (status != null)
             queryParameters.Add(("status", ((int)status).ToString()));
         queryParameters.Add(("page", page.ToString()));
 
-        return await Wrapper.GetAsync<BasicMapset[]>("users/mapsets", "mapsets", queryParameters.ToArray());
+        return await Wrapper.GetAsync<BasicMapset[]>($"users/mapsets/{id}", "mapsets", queryParameters.ToArray());
     }
 
     public async Task<GraphStatistics[]> GetUserGraphStatisticsAsync(int id, GameMode mode)
@@ -91,11 +89,11 @@ public partial class Endpoints
 
     public async Task<BasicPlaylist[]> GetUserPlaylistsAsync(int id)
     {
-        return await Wrapper.GetAsync<BasicPlaylist[]>($"users/playlists/{id}", "playlists");
+        return await Wrapper.GetAsync<BasicPlaylist[]>($"users/{id}/playlists", "playlists");
     }
 
     public async Task<Achievement[]> GetUserAchievementsAsync(int id)
     {
-        return await Wrapper.GetAsync<Achievement[]>($"users/achievements/{id}", "achievements");
+        return await Wrapper.GetAsync<Achievement[]>($"users/{id}/achievements", "achievements");
     }
 }

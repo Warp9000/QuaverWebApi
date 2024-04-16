@@ -178,7 +178,7 @@ public struct FullUser
         public bool UserpageDisabled { get; set; }
 
         [JsonProperty("clan_id")]
-        public int ClanId { get; set; }
+        public int? ClanId { get; set; }
 
         [JsonProperty("online")]
         public bool Online { get; set; }
