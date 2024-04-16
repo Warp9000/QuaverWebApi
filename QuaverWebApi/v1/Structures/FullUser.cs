@@ -1,5 +1,6 @@
 using System;
 using Newtonsoft.Json;
+using QuaverWebApi.v1.Structures.Enums;
 
 namespace QuaverWebApi.v1.Structures;
 
@@ -7,7 +8,7 @@ namespace QuaverWebApi.v1.Structures;
 public struct FullUser
 {
     [JsonProperty("info")]
-    public User Info { get; set; }
+    public UserInfo Info { get; set; }
 
     [JsonProperty("profile_badges")]
     public ProfileBadge[] ProfileBadges { get; set; }
@@ -129,6 +130,78 @@ public struct FullUser
 
             [JsonProperty("multiplayer_ties")]
             public int MultiplayerTies { get; set; }
+        }
+    }
+
+    public struct UserInfo
+    {
+        [JsonProperty("id")]
+        public int Id { get; set; }
+
+        [JsonProperty("steam_id")]
+        public string SteamId { get; set; }
+
+        [JsonProperty("username")]
+        public string Username { get; set; }
+
+        [JsonProperty("country")]
+        public string Country { get; set; }
+
+        [JsonProperty("time_registered")]
+        public DateTime TimeRegistered { get; set; }
+
+        [JsonProperty("allowed")]
+        public bool Allowed { get; set; }
+
+        [JsonProperty("privileges")]
+        public Privileges Privileges { get; set; }
+
+        [JsonProperty("usergroups")]
+        public UserGroups UserGroups { get; set; }
+
+        [JsonProperty("mute_end_time")]
+        public DateTime MuteEndTime { get; set; }
+
+        [JsonProperty("latest_activity")]
+        public DateTime LatestActivity { get; set; }
+
+        [JsonProperty("avatar_url")]
+        public string AvatarUrl { get; set; }
+    
+        [JsonProperty("userpage")]
+        public string Userpage { get; set; }
+
+        [JsonProperty("information")]
+        public UserInformation Information { get; set; }
+
+        [JsonProperty("userpage_disabled")]
+        public bool UserpageDisabled { get; set; }
+
+        [JsonProperty("clan_id")]
+        public int ClanId { get; set; }
+
+        [JsonProperty("online")]
+        public bool Online { get; set; }
+
+        public struct UserInformation
+        {
+            [JsonProperty("default_mode")]
+            public GameMode DefaultMode { get; set; }
+
+            [JsonProperty("discord")]
+            public string Discord { get; set; }
+
+            [JsonProperty("twitter")]
+            public string Twitter { get; set; }
+
+            [JsonProperty("twitch")]
+            public string Twitch { get; set; }
+
+            [JsonProperty("youtube")]
+            public string Youtube { get; set; }
+
+            [JsonProperty("notif_action_mapset")]
+            public bool NotifActionMapset { get; set; }
         }
     }
 }
